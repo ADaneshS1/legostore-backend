@@ -1,9 +1,12 @@
-import { Hono } from 'hono'
+import { Hono } from "hono";
+import { logger } from "hono/logger";
+import { commonRoute } from "./modules/common/route";
+import { legoGameRoute } from "./modules/lego-game/route";
 
-const app = new Hono()
+const app = new Hono();
+app.use(logger());
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+app.route("/", commonRoute);
+app.route("/lego-game", legoGameRoute);
 
-export default app
+export default app;
