@@ -1,5 +1,3 @@
-# KADS Game
-
 To install dependencies:
 ```sh
 bun install
