@@ -1,12 +1,33 @@
-import { Hono } from "hono";
+import { OpenAPIHono } from "@hono/zod-openapi"; // Ganti Hono biasa
 import { logger } from "hono/logger";
-import { commonRoute } from "./modules/common/route";
-import { legoGameRoute } from "./modules/lego-game/route";
+import { Scalar } from "@scalar/hono-api-reference";
 
-const app = new Hono();
+import { commonRoutes } from "./modules/common/route";
+import { legoGameRoutes } from "./modules/lego-game/route";
+
+const app = new OpenAPIHono();
+
 app.use(logger());
+app.doc("/openapi.json", {
+  openapi: "3.0.0",
+  info: {
+    version: "1.0.0",
+    title: "LEGO Game API",
+    description: "API untuk mengelola koleksi game LEGO",
+  },
+});
 
-app.route("/", commonRoute);
-app.route("/lego-game", legoGameRoute);
+app.get(
+  "/",
+  Scalar({
+    spec: {
+      url: "/openapi.json",
+    },
+    theme: "deepSpace",
+  } as any),
+);
+
+app.route("/", commonRoutes);
+app.route("/lego-game", legoGameRoutes);
 
 export default app;
