@@ -1,6 +1,6 @@
-import { SeedLegoGame } from "./schema";
+import { SeedGame } from "./schema";
 
-export const dataLegoGames: SeedLegoGame[] = [
+export const dataGames: SeedGame[] = [
   {
     slug: "lego-marvel-super-heroes-2",
     name: "LEGO® Marvel Super Heroes 2",

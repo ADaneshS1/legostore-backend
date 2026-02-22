@@ -3,7 +3,7 @@ import { logger } from "hono/logger";
 import { Scalar } from "@scalar/hono-api-reference";
 
 import { commonRoutes } from "./modules/common/route";
-import { legoGameRoutes } from "./modules/lego-game/route";
+import { gameRoutes } from "./modules/game/route";
 
 const app = new OpenAPIHono();
 
@@ -28,6 +28,6 @@ app.get(
 );
 
 app.route("/", commonRoutes);
-app.route("/lego-game", legoGameRoutes);
+app.route("/games", gameRoutes);
 
 export default app;
