@@ -1,25 +1,24 @@
-// prisma/seed.ts
 import { prisma } from "../src/lib/prisma";
 import { dataGames } from "../src/modules/game/data";
 import { dataCategories } from "../src/modules/category/data";
 
 async function main() {
-  console.log("🚀 Memulai proses input data ke database...");
+  console.log("🚀 Starting data seeding process...");
 
   // 1. Input Categories
-  for (const cat of dataCategories) {
+  for (const category of dataCategories) {
     await prisma.category.upsert({
-      where: { slug: cat.slug },
-      update: { name: cat.name },
-      create: { name: cat.name, slug: cat.slug },
+      where: { slug: category.slug },
+      update: { name: category.name },
+      create: { name: category.name, slug: category.slug },
     });
   }
 
-  // 2. Input Games & Hubungkan ke Category
+  // 2. Input Games & Connect to Category
   for (const game of dataGames) {
     const { categorySlug, ...gameBody } = game;
 
-    const result = await prisma.game.upsert({
+    const upsertedGame = await prisma.game.upsert({
       where: { slug: game.slug },
       update: {
         ...gameBody,
@@ -30,16 +29,16 @@ async function main() {
         category: { connect: { slug: categorySlug } },
       },
     });
-    console.log(`✅ Game Berhasil Masuk: ${result.name}`);
-  }
 
-  console.log("🏁 Semua data sudah masuk ke database!");
+    console.log(`✅ Game successfully upserted: ${upsertedGame.name}`);
+  }
 }
 
 main()
-  .then(async () => await prisma.$disconnect())
-  .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
+  .catch((e) => {
+    console.error("❌ Seed failed:", e);
     process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
   });

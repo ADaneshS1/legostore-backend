@@ -8,12 +8,13 @@ import { gameRoutes } from "./modules/game/route";
 const app = new OpenAPIHono();
 
 app.use(logger());
+
 app.doc("/openapi.json", {
   openapi: "3.0.0",
   info: {
     version: "1.0.0",
     title: "LEGO Game API",
-    description: "API untuk mengelola koleksi game LEGO",
+    description: "API for managing LEGO game collection",
   },
 });
 
@@ -27,7 +28,7 @@ app.get(
   } as any),
 );
 
-app.route("/test", commonRoutes);
+app.route("/", commonRoutes);
 app.route("/games", gameRoutes);
 
 export default app;

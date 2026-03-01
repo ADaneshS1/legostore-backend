@@ -1,32 +1,38 @@
 import { createRoute, OpenAPIHono, z } from "@hono/zod-openapi";
+import { prisma } from "../../lib/prisma";
 
 export const commonRoutes = new OpenAPIHono();
 
-const getRootRoute = createRoute({
-  method: "get",
-  path: "/",
-  summary: "Health Check / Root API",
-  responses: {
-    200: {
-      content: {
-        "application/json": {
-          schema: z.object({
-            title: z.string().openapi({ example: "Lego Game API" }),
-            message: z.string().openapi({ example: "Test" }),
-          }),
+commonRoutes.openapi(
+  createRoute({
+    method: "get",
+    path: "/health-check",
+    summary: "Health Check / Root API",
+    responses: {
+      200: {
+        content: {
+          "application/json": {
+            schema: z.object({
+              title: z.string().openapi({ example: "Lego Game API" }),
+              message: z.string().openapi({ example: "Health Check" }),
+              countProducts: z.number().openapi({ example: 100 }),
+            }),
+          },
         },
+        description: "Health Check information",
       },
-      description: "Root endpoint information",
     },
-  },
-});
+  }),
+  async (c) => {
+    const countProducts = await prisma.game.count();
 
-commonRoutes.openapi(getRootRoute, (c) => {
-  return c.json(
-    {
-      title: "Lego Game API",
-      message: "Test",
-    },
-    200,
-  );
-});
+    return c.json(
+      {
+        title: "Health Check",
+        message: "Health Check",
+        countProducts,
+      },
+      200,
+    );
+  },
+);
