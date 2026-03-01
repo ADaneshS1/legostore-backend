@@ -12,7 +12,6 @@
     "db:reset": "prisma migrate reset --skip-seed"
   },
   "dependencies": {
-    "@asteasolutions/zod-to-openapi": "^8.4.1",
     "@hono/zod-openapi": "^1.2.2",
     "@prisma/adapter-pg": "^7.4.2",
     "@prisma/client": "^7.4.2",
