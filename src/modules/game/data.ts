@@ -2,7 +2,7 @@ import { SeedGame } from "./schema";
 
 export const dataGames: SeedGame[] = [
   {
-    categorySlug: "marvel", // Tambahkan ini
+    categorySlug: "marvel",
     slug: "lego-marvel-super-heroes-2",
     name: "LEGO® Marvel Super Heroes 2",
     sku: "LG-MARVEL-02",
@@ -11,7 +11,7 @@ export const dataGames: SeedGame[] = [
     imageUrl: "https://link-your-pic.com/marvel-2.jpg",
   },
   {
-    categorySlug: "star-wars", // Tambahkan ini
+    categorySlug: "star-wars",
     slug: "lego-star-wars-the-skywalker-saga",
     name: "LEGO® Star Wars™: The Skywalker Saga",
     sku: "LG-SW-SAGA",
@@ -20,7 +20,7 @@ export const dataGames: SeedGame[] = [
     imageUrl: "https://link-your-pic.com/star-wars-saga.jpg",
   },
   {
-    categorySlug: "harry-potter", // Tambahkan ini
+    categorySlug: "harry-potter",
     slug: "lego-harry-potter-collection",
     name: "LEGO® Harry Potter™ Collection",
     sku: "LG-HP-COLL",
@@ -29,7 +29,7 @@ export const dataGames: SeedGame[] = [
     imageUrl: "https://link-your-pic.com/hp-collection.jpg",
   },
   {
-    categorySlug: "city", // Tambahkan ini
+    categorySlug: "city",
     slug: "lego-city-undercover",
     name: "LEGO® City Undercover",
     sku: "LG-CITY-UC",
@@ -38,7 +38,7 @@ export const dataGames: SeedGame[] = [
     imageUrl: "https://link-your-pic.com/city-undercover.jpg",
   },
   {
-    categorySlug: "batman", // Tambahkan ini
+    categorySlug: "batman",
     slug: "lego-batman-3-beyond-gotham",
     name: "LEGO® Batman™ 3: Beyond Gotham",
     sku: "LG-BAT-03",

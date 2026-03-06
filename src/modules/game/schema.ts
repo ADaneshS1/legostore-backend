@@ -3,26 +3,22 @@ import { CategorySchema } from "../category/schema"; // Pastikan path ini benar
 
 export const GameSchema = z
   .object({
-    id: z.number().int().min(1).openapi({ example: 1 }),
+    id: z.string().openapi({ example: "abc" }),
     name: z.string().min(1).openapi({ example: "LEGO® Marvel Super Heroes 2" }),
     slug: z.string().min(1).openapi({ example: "lego-marvel-super-heroes-2" }),
     sku: z.string().min(1).openapi({ example: "LG-MARVEL-02" }),
     price: z.number().positive().openapi({ example: 150000 }),
     stockQuantity: z.number().int().min(0).openapi({ example: 25 }),
     imageUrl: z
-      .string()
       .url()
-      .nullable() // Database PostgreSQL biasanya mengizinkan null untuk imageUrl
+      .nullable()
       .openapi({ example: "https://link-your-pic.com/marvel-2.jpg" }),
 
-    // --- TAMBAHKAN DUA BARIS INI ---
-    categoryId: z.number().int().nullable().openapi({ example: 1 }),
-    category: CategorySchema.nullable().optional(),
-    // ------------------------------
+    categoryId: z.string().nullable().openapi({ example: 1 }),
+    category: CategorySchema.nullable(),
 
-    // Perbaikan z.iso.datetime menjadi z.string().datetime()
-    createdAt: z.string().datetime().openapi({ format: "date-time" }),
-    updatedAt: z.string().datetime().openapi({ format: "date-time" }),
+    createdAt: z.iso.datetime().openapi({ format: "date-time" }),
+    updatedAt: z.iso.datetime().openapi({ format: "date-time" }),
   })
   .openapi("LegoGame");
 

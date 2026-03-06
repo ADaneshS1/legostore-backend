@@ -2,7 +2,7 @@ import { z } from "@hono/zod-openapi";
 
 export const CategorySchema = z
   .object({
-    id: z.number().int().openapi({ example: 1 }),
+    id: z.string().openapi({ example: "abc" }),
     name: z.string().min(1).openapi({ example: "Marvel" }),
     slug: z.string().min(1).openapi({ example: "marvel" }),
     createdAt: z.date().openapi({ format: "date-time" }),
