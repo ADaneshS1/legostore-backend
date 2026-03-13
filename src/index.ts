@@ -1,13 +1,14 @@
 import { OpenAPIHono } from "@hono/zod-openapi"; // Ganti Hono biasa
 import { logger } from "hono/logger";
 import { Scalar } from "@scalar/hono-api-reference";
-
+import { cors } from "hono/cors";
 import { commonRoutes } from "./modules/common/route";
 import { gameRoutes } from "./modules/game/route";
 
 const app = new OpenAPIHono();
 
 app.use(logger());
+app.use(cors());
 
 app.doc("/openapi.json", {
   openapi: "3.0.0",
