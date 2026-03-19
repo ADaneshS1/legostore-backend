@@ -7,7 +7,6 @@ import { gameRoutes } from "./modules/game/route";
 import { serveStatic } from "hono/bun";
 
 const app = new OpenAPIHono();
-app.use("/public/*", serveStatic({ root: "./" }));
 app.use(logger());
 app.use(cors());
 
