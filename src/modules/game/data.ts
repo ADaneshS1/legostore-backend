@@ -8,7 +8,7 @@ export const dataGames: SeedGame[] = [
     sku: "LG-MARVEL-02",
     price: 150000,
     stockQuantity: 25,
-    imageUrl: "https://link-your-pic.com/marvel-2.jpg",
+    imageUrl: "/images/lego-marvel-super-heroes-2.jpg",
   },
   {
     categorySlug: "star-wars",
@@ -17,7 +17,7 @@ export const dataGames: SeedGame[] = [
     sku: "LG-SW-SAGA",
     price: 450000,
     stockQuantity: 15,
-    imageUrl: "https://link-your-pic.com/star-wars-saga.jpg",
+    imageUrl: "/images/lego-marvel-super-heroes-2.jpg",
   },
   {
     categorySlug: "harry-potter",
@@ -26,7 +26,7 @@ export const dataGames: SeedGame[] = [
     sku: "LG-HP-COLL",
     price: 250000,
     stockQuantity: 40,
-    imageUrl: "https://link-your-pic.com/hp-collection.jpg",
+    imageUrl: "/images/lego-marvel-super-heroes-2.jpg",
   },
   {
     categorySlug: "city",
@@ -35,7 +35,7 @@ export const dataGames: SeedGame[] = [
     sku: "LG-CITY-UC",
     price: 180000,
     stockQuantity: 10,
-    imageUrl: "https://link-your-pic.com/city-undercover.jpg",
+    imageUrl: "/images/lego-marvel-super-heroes-2.jpg",
   },
   {
     categorySlug: "batman",
@@ -44,6 +44,6 @@ export const dataGames: SeedGame[] = [
     sku: "LG-BAT-03",
     price: 125000,
     stockQuantity: 50,
-    imageUrl: "https://link-your-pic.com/batman-3.jpg",
+    imageUrl: "/images/lego-marvel-super-heroes-2.jpg",
   },
 ];

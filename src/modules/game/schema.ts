@@ -28,8 +28,8 @@ export const GameCreateSchema = GameSchema.omit({
   id: true,
   createdAt: true,
   updatedAt: true,
-  category: true, // Hilangkan dari input create
-  categoryId: true, // Hilangkan dari input create, kita pakai slug
+  category: true,
+  categoryId: true,
 })
   .extend({
     categorySlug: z.string().min(1).openapi({ example: "marvel" }),

@@ -4,9 +4,10 @@ import { Scalar } from "@scalar/hono-api-reference";
 import { cors } from "hono/cors";
 import { commonRoutes } from "./modules/common/route";
 import { gameRoutes } from "./modules/game/route";
+import { serveStatic } from "hono/bun";
 
 const app = new OpenAPIHono();
-
+app.use("/public/*", serveStatic({ root: "./" }));
 app.use(logger());
 app.use(cors());
 
@@ -30,6 +31,6 @@ app.get(
 );
 
 app.route("/healt-check", commonRoutes);
-app.route("/games", gameRoutes);
+app.route("/products", gameRoutes);
 
 export default app;
