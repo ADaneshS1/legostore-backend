@@ -8,7 +8,7 @@ gameRoutes.openapi(
   createRoute({
     method: "get",
     path: "/",
-    summary: "Get all LEGO games",
+    summary: "Get all games",
     responses: {
       200: {
         content: { "application/json": { schema: z.array(GameSchema) } },
