@@ -8,7 +8,7 @@ export const dataGames: SeedGame[] = [
     sku: "LG-MARVEL-02",
     price: 150000,
     stockQuantity: 25,
-    imageUrl: "/images/lego-marvel-super-heroes-2.jpg",
+    imageUrl: "/images/lego-marvel-super-heroes-2.jpg", // TODO
   },
   {
     categorySlug: "star-wars",
@@ -17,7 +17,7 @@ export const dataGames: SeedGame[] = [
     sku: "LG-SW-SAGA",
     price: 450000,
     stockQuantity: 15,
-    imageUrl: "/images/lego-marvel-super-heroes-2.jpg",
+    imageUrl: "/images/lego-marvel-super-heroes-2.jpg", // TODO
   },
   {
     categorySlug: "harry-potter",
