@@ -10,7 +10,7 @@ export const GameSchema = z
     price: z.number().positive().openapi({ example: 150000 }),
     stockQuantity: z.number().int().min(0).openapi({ example: 25 }),
     imageUrl: z
-      .url()
+      .string()
       .nullable()
       .openapi({ example: "https://link-your-pic.com/marvel-2.jpg" }),
 

@@ -4,7 +4,6 @@ import { Scalar } from "@scalar/hono-api-reference";
 import { cors } from "hono/cors";
 import { commonRoutes } from "./modules/common/route";
 import { gameRoutes } from "./modules/game/route";
-import { serveStatic } from "hono/bun";
 
 const app = new OpenAPIHono();
 app.use(logger());
