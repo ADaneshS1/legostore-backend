@@ -9,7 +9,7 @@ export const dataGames: SeedGame[] = [
     price: 150000,
     stockQuantity: 25,
     imageUrl:
-      "https://ucarecdn.com/cd818dd8-df8e-4b2c-b66d-a64a812763f3/-/preview/317x147/",
+      "https://ddx0pq030e.ucarecd.net/4576fe85-1ba4-4bcb-a67e-8c925c2fb337/image11.png",
   },
   {
     categorySlug: "dc",
