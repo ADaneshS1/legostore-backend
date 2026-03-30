@@ -12,7 +12,8 @@ async function main() {
       update: { name: category.name },
       create: { name: category.name, slug: category.slug },
     });
-    console.log(`📂 Category: ${upsertedCategory.name}`);
+
+    console.log(`Category: ${upsertedCategory.name}`);
   }
 
   // 2. Input Games & Connect to Category
