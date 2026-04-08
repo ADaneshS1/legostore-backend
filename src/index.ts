@@ -29,7 +29,7 @@ app.get(
   } as any),
 );
 
-app.route("/healt-check", commonRoutes);
+app.route("/health-check", commonRoutes);
 app.route("/products", gameRoutes);
 app.route("/users", userRoute);
 
