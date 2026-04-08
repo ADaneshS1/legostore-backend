@@ -8,6 +8,7 @@ userRoute.openapi(
   createRoute({
     method: "get",
     path: "/",
+    summary: "Get All Users",
     responses: {
       200: {
         content: { "application/json": { schema: UsersSchema } },
