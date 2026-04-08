@@ -17,7 +17,11 @@ userRoute.openapi(
     },
   }),
   async (c) => {
-    const users = await prisma.user.findMany();
+    const users = await prisma.user.findMany({
+      omit: {
+        email: true,
+      },
+    });
     return c.json(users);
   },
 );
