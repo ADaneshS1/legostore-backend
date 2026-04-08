@@ -2,7 +2,7 @@ import { createRoute, OpenAPIHono } from "@hono/zod-openapi";
 import { prisma } from "../../lib/prisma";
 import { RegisterNewUserSchema } from "./schema";
 import { UserSchema } from "../user/schema";
-
+import { hashPassword } from "../../lib/hash";
 export const authRoute = new OpenAPIHono();
 
 authRoute.openapi(
@@ -27,6 +27,18 @@ authRoute.openapi(
   }),
   async (c) => {
     const validatedBody = c.req.valid("json");
-    return c.json(validatedBody);
+    const newUser = await prisma.user.create({
+      data: {
+        username: validatedBody.username,
+        email: validatedBody.email,
+        name: validatedBody.name,
+        password: {
+          create: {
+            hash: await hashPassword(validatedBody.password),
+          },
+        },
+      },
+    });
+    return c.json(newUser);
   },
 );
