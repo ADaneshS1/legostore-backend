@@ -7,6 +7,7 @@ import {
 } from "./schema";
 import { UserSchema } from "../user/schema";
 import { hashPassword, verifyPassword } from "../../lib/hash";
+import { signToken } from "../../lib/token";
 export const authRoute = new OpenAPIHono();
 
 authRoute.openapi(
@@ -114,10 +115,20 @@ authRoute.openapi(
         );
       }
 
-      return c.json({
-        token: "",
-        user: existingUser,
-      });
+      console.log({ existingUser });
+
+      const token = signToken({ id: existingUser.id });
+
+      const loginResponse = {
+        token,
+        user: {
+          id: existingUser.id,
+          username: existingUser.username,
+          email: existingUser.email,
+          name: existingUser.name,
+        },
+      };
+      return c.json(loginResponse);
     } catch (error) {
       console.error(error);
       return c.json(
