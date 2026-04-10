@@ -1,6 +1,10 @@
 import { createRoute, OpenAPIHono } from "@hono/zod-openapi";
 import { prisma } from "../../lib/prisma";
-import { RegisterNewUserSchema } from "./schema";
+import {
+  RegisterNewUserSchema,
+  LoginUserSchema,
+  LoginResponseSchema,
+} from "./schema";
 import { UserSchema } from "../user/schema";
 import { hashPassword } from "../../lib/hash";
 export const authRoute = new OpenAPIHono();
@@ -46,6 +50,56 @@ authRoute.openapi(
       return c.json(
         {
           message: "Failed to register new user",
+          error,
+        },
+        400,
+      );
+    }
+  },
+);
+
+authRoute.openapi(
+  createRoute({
+    method: "post",
+    path: "/login",
+    summary: "Login User",
+    request: {
+      body: {
+        content: { "application/json": { schema: LoginUserSchema } },
+      },
+    },
+    responses: {
+      200: {
+        content: { "application/json": { schema: LoginResponseSchema } },
+        description: "Login user",
+      },
+      400: {
+        description: "Failed to login user",
+      },
+    },
+  }),
+  async (c) => {
+    try {
+      const validatedBody = c.req.valid("json");
+
+      const existingUser = await prisma.user.findUnique({
+        where: {
+          email: validatedBody.email,
+        },
+        include: {
+          password: { select: { hash: true } },
+        },
+      });
+
+      return c.json({
+        token: "",
+        user: existingUser,
+      });
+    } catch (error) {
+      console.error(error);
+      return c.json(
+        {
+          message: "Failed to login user",
           error,
         },
         400,
