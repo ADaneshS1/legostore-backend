@@ -2,9 +2,9 @@ import { createRoute, OpenAPIHono, z } from "@hono/zod-openapi";
 import { GameSchema } from "./schema";
 import { prisma } from "../../lib/prisma";
 
-export const gameRoutes = new OpenAPIHono();
+export const gameRoute = new OpenAPIHono();
 
-gameRoutes.openapi(
+gameRoute.openapi(
   createRoute({
     method: "get",
     path: "/",
@@ -25,7 +25,7 @@ gameRoutes.openapi(
   },
 );
 
-gameRoutes.openapi(
+gameRoute.openapi(
   createRoute({
     method: "get",
     path: "/{slug}",

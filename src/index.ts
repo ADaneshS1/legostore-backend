@@ -2,8 +2,8 @@ import { OpenAPIHono } from "@hono/zod-openapi"; // Ganti Hono biasa
 import { logger } from "hono/logger";
 import { Scalar } from "@scalar/hono-api-reference";
 import { cors } from "hono/cors";
-import { commonRoutes } from "./modules/common/route";
-import { gameRoutes } from "./modules/game/route";
+import { commonRoute } from "./modules/common/route";
+import { gameRoute } from "./modules/game/route";
 import { userRoute } from "./modules/user/route";
 import { authRoute } from "./modules/auth/route";
 
@@ -30,8 +30,8 @@ app.get(
   } as any),
 );
 
-app.route("/health-check", commonRoutes);
-app.route("/products", gameRoutes);
+app.route("/health-check", commonRoute);
+app.route("/games", gameRoute);
 app.route("/users", userRoute);
 app.route("/auth", authRoute);
 
